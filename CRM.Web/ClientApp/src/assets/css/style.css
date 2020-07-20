@@ -1,0 +1,125 @@
+.base {
+  color: pink;
+}
+
+.aaaaaaaaaaaa {
+  z-index: 1;
+}
+
+body, html {
+  font-family: "Roboto", sans-serif;
+}
+
+.disabled {
+  display: none;
+}
+
+.custom-form {
+  border: 1px solid #ccc;
+  position: relative;
+  padding: 20px;
+}
+
+.custom-form .legend {
+  position: absolute;
+  top: -13px;
+  padding: 0 5px;
+  z-index: 20;
+  background: white;
+}
+
+.custom-form .legend::after {
+  height: 1px;
+  content: "";
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  top: 12px;
+  z-index: 59;
+  left: 0;
+}
+
+.custom-form .legend p {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  z-index: 69;
+}
+
+.employee-information__avatar {
+  text-align: center;
+}
+
+.employee-information__avatar--content {
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.employee-information__avatar--content img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.custom-form .change-page {
+  width: 100%;
+}
+
+.col-form-label--custom {
+  flex: 0 0 12.5%;
+  max-width: 12.5%;
+}
+
+.form-control--custom {
+  flex: 0 0 87.5%;
+  max-width: 87.5%;
+}
+
+.form-group {
+  margin-bottom: 1rem !important;
+}
+
+.form-group label {
+  font-size: 14px !important;
+}
+
+.list-inline {
+  margin: 0;
+}
+
+.list-inline li {
+  display: inline-block;
+}
+
+a.btn.btn-custom {
+  padding: 2px;
+  color: #fff;
+}
+
+a.btn.btn-custom i {
+  display: block;
+  padding: 3px;
+  line-height: 1rem;
+}
+
+td.option {
+  max-width: 150px;
+  width: 150px;
+  text-align: center;
+}
+
+td.type {
+  max-width: 200px;
+  width: 200px;
+}
+
+hr {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

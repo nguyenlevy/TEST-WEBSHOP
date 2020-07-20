@@ -1,0 +1,118 @@
+<div class="p-3">
+    <div class="theme-container">
+
+        <div class="theme-container" *ngIf="!isHaveProductCart">
+            <div fxFlex="100" fxFlex.gt-sm="100">
+                <div class="mt-2 mb-2"><span style="font-size: 1.4rem;font-weight: 700;">GIỎ HÀNG</span><span
+                        style="font-size: 1.2rem;">(0 Sản Phẩm)</span></div>
+                <div style="text-align: center;" class="theme-container">
+                    <mat-icon style="color: #e5101d;font-size: 5rem;margin-left: -2.5rem;cursor: context-menu;">
+                        shopping_cart</mat-icon>
+                    <div style="font-size: 1.4rem;cursor: context-menu;">Giỏ hàng đang trống</div>
+                    <div class="mt-2">
+                        <a routerLink="/home"
+                            style="cursor: pointer;;font-size: 1.2rem; font-size: 1.2rem;padding: 4px 8px;background-color: rgb(244, 67, 54);color: #fff;border-radius: 4px;">Tiếp
+                            tục mua sắm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="theme-container" *ngIf="isHaveProductCart">
+            <div fxFlex="100" fxFlex.gt-sm="100">
+                <div class="mt-2 mb-2"><span style="font-size: 1.4rem;font-weight: 700;">GIỎ HÀNG</span><span
+                        style="font-size: 1.2rem;">({{listProductSelected.length}} Sản Phẩm)</span></div>
+                <div class="wp-table-b">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="tb-list-product">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Sản phẩm bạn chọn</th>
+                                <th>Giá thành</th>
+                                <th>Số lượng</th>
+                                <th>Thành Tiền</th>
+                                <th><button><i class="far fa-trash-alt"></i></button><span>Xóa</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of listProductSelected; let i = index">
+                                <td>
+                                    <div class="img"><img [src]="appService.formatUrlImage(product)"></div>
+                                </td>
+                                <td>
+                                    <p class="h2-title">{{product.Name}}</p>
+                                    <div class="post">
+                                        <div class="mb-1">Thương hiệu: <span *ngFor="let item of product.Brands"
+                                                class="text-info">{{item.Name}}; </span>
+                                        </div>
+                                        <div class="mb-1">Xuất xứ: <span
+                                                class="text-info">{{product.ProductManufacturer}}.</span></div>
+                                    </div>
+                                </td>
+                                <td><b class="int">{{product.Cost | number:'1.0-2'}} đ</b></td>
+                                <td><input class="input-number" type="number" min="1" value="{{product.quantity}}"
+                                        (change)="changeQuantity($event.target.value,i)"
+                                        (keyup)="changeQuantity($event.target.value,i)"></td>
+                                <td><b>{{product.totalMoney | number:'1.0-2'}} đ</b></td>
+                                <td><i class="far fa-times-circle" (click)="deleteProductSelected(i)"></i></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" rowspan="2"></td>
+                                <td colspan="2" style="text-align: right;"><span>Tạm tính (chưa tính phí vận
+                                        chuyển)</span>
+                                </td>
+                                <td colspan="2" style="text-align: right;"><span
+                                        class="price-f1">{{totalMoney.total  | number:'1.0-2'}} đ</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;"><b>Thành tiền</b></td>
+                                <td colspan="2" style="text-align: right;"><b
+                                        class="price-ft">{{totalMoney.total | number:'1.0-2'}} đ</b></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme-container" *ngIf="isHaveProductCart">
+            <div fxFlex="100" fxFlex.gt-sm="88.8" class="p-3">
+                <button mat-stroked-button>
+                    <a [routerLink]="['/home']" class="social-icon" style="display: flex;align-items: center;">
+                        <mat-icon>keyboard_arrow_left</mat-icon> Tiếp tục mua hàng
+                    </a>
+                </button>
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="22.2" class="p-3" fxLayoutAlign="center center">
+                <div style="text-align: right;width: 100%;">
+                    <button mat-stroked-button>
+                        <a [routerLink]="['/order']" class="social-icon" style="display: flex;align-items: center;">
+                            Đặt hàng
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="divider mt-3 mb-3"></div>
+
+        <div class="wp-container_b" *ngIf="appService.isDisplayViewed">
+            <div class="px-3 mb-3 container-viewed">
+                <div class="theme-container" *ngIf="appService.isDisplayViewed">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer"><strong>SẢN PHẨM ĐÃ XEM</strong></div>
+                        </div>
+                    </div>
+                    <app-product-list [listData]="listProductViewed" [isSale]="false"></app-product-list>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

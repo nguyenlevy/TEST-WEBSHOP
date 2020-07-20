@@ -1,0 +1,24 @@
+.pos-container {
+  display: flex;
+  width: 100%;
+
+  .pos-left-part {
+    width: 40%;
+    background-color: white;
+  }
+
+  .pos-right-part {
+    width: 60%;
+
+    .gird-product-container {
+      .ui-table-scrollable-view {
+        .ui-table-scrollable-body {
+          .ui-table-tbody {
+            .ui-selectable-row {
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+<div class="form-split">
+  <p-tabView>
+    <p-tabPanel header="{{'PRODUCT' | translate : 'BASIC_INFORMATION'}}">
+      <form [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+        <div class="parent">
+          <div class="child mg-r-10">
+            <div class="modal-body">
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{('PRODUCT' | translate : 'NAME') + ' (*)'}} </label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText formControlName="name" class="form-control fix-height" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">
+                      <p-message severity="error" text="{{'PRODUCT' | translate: 'NAME_REQUIRED'}}"></p-message>
+                    </div>
+                    <div *ngIf="f.name.errors.isDuplicate">
+                      <p-message severity="error" text="{{'PRODUCT' | translate: 'DUPLICATE_NAME'}}"></p-message>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'COST'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText numbersOnly formControlName="cost" placeholder="{{'PRODUCT' | translate : 'ENTER_COST'}}" class="form-control fix-height">
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'PRODUCT_CATEGORY'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <p-dropdown formControlName="selectedProductCategory"
+                              [options]="productCategoryOptions"
+                              [style]="{'min-width':'100%', 'width': '100%'}" class="fix-height max-width"
+                              appendTo="body" optionLabel="label">
+                  </p-dropdown>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'PRODUCT_CODE'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText formControlName="productCode" placeholder="{{'PRODUCT' | translate : 'THE_SYSTEM_GENERATE_PRODUCT_CODE'}}" class="form-control fix-height">
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'PRODUCT_TYPE'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <p-dropdown formControlName="selectedProductType"
+                              [options]="productTypeOptions"
+                              [style]="{'min-width':'100%', 'width': '100%'}" class="fix-height max-width"
+                              appendTo="body" optionLabel="label">
+                  </p-dropdown>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'MIN_STOCK_QUANTITY'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText numbersOnly formControlName="minStockQuantity" class="form-control fix-height">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="child mg-r-10">
+            <div class="modal-body">
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form"></label>
+                <div class="d-flex flex-column max-width">
+                  <p-checkbox label="{{'PRODUCT' | translate : 'FOLLOW_INVENTORY'}}" value="followInventory" [formControl]="formProduct.controls['followInventory']"></p-checkbox>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form"></label>
+                <div class="d-flex flex-column max-width">
+                  <p-checkbox label="{{'PRODUCT' | translate : 'ALLOW_NEGATIVE_INVENTORY'}}" value="allowNegativeInventory" [formControl]="formProduct.controls['allowNegativeInventory']"></p-checkbox>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'PRICE'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText numbersOnly formControlName="price" placeholder="{{'PRODUCT' | translate : 'ENTER_PRICE'}}" class="form-control fix-height">
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'PRODUCT_MANUFACTURER'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <p-dropdown formControlName="selectedProductManufacturer"
+                              [options]="productManufacturerOptions"
+                              [style]="{'min-width':'100%', 'width': '100%'}" class="fix-height max-width"
+                              appendTo="body" optionLabel="label">
+                  </p-dropdown>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'TAX_VAT'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <p-dropdown formControlName="selectedTaxCategory"
+                              [options]="taxCategoryOptions"
+                              [style]="{'min-width':'100%', 'width': '100%'}" class="fix-height max-width"
+                              appendTo="body" optionLabel="label">
+                  </p-dropdown>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form">{{'PRODUCT' | translate : 'MAX_STOCK_QUANTITY'}}</label>
+                <div class="d-flex flex-column max-width">
+                  <input pInputText numbersOnly formControlName="maxStockQuantity" class="form-control fix-height">
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form"></label>
+                <div class="d-flex flex-column max-width">
+                  <p-checkbox label="{{'PRODUCT' | translate : 'MANAGE_BY_SERIAL'}}" value="manageBySerial" [formControl]="formProduct.controls['manageBySerial']"></p-checkbox>
+                </div>
+              </div>
+              <div class="form-group custom-form-add">
+                <label class="label-edit label-form"></label>
+                <div class="d-flex flex-column max-width">
+                  <p-checkbox label="{{'PRODUCT' | translate : 'PUBLISHED_POS'}}" value="publishedPOS" [formControl]="formProduct.controls['publishedPOS']"></p-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-tabPanel>
+    <p-tabPanel header="{{'PRODUCT' | translate : 'WEB_INFORMATION'}}">
+      Content 2
+    </p-tabPanel>
+  </p-tabView>
+  <p-footer>
+    <div class="form-group custom-form-add button-container-in-form">
+      <button icon="pi pi-save" pButton type="button" label="{{'BUTTONS' | translate : 'SAVE'}}" class="btn btn-primary mg-r-5" (click)="onSubmit()"></button>
+      <button icon="pi pi-times" pButton type="button" label="{{'BUTTONS' | translate : 'CLOSE'}}" class="ui-button-secondary" (click)="close()"></button>
+    </div>
+  </p-footer>
+</div>

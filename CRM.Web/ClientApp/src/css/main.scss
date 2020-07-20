@@ -1,0 +1,296 @@
+.max-width {
+  width: 100%;
+}
+
+.mg-r-5 {
+  margin-right: 5px !important;
+}
+
+.mg-l-85 {
+  margin-left: 85px;
+}
+
+.label-edit {
+  text-align: right;
+  min-width: 168.34px;
+  max-width: 168.34px;
+  display: block;
+  line-height: 30px;
+  margin-bottom: 0 !important;
+  padding-right: 30px;
+}
+
+.custom-form-add {
+  margin-bottom: 4px !important;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}
+
+.border-bottom-none {
+  border-bottom: none;
+}
+
+.mg-t-20 {
+  margin-top: 20px;
+}
+
+.add-item-header {
+  color: #20a8d8;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.mg-r-10 {
+  margin-right: 10px;
+}
+
+.mg-l-10 {
+  margin-left: 10px !important;
+}
+
+.search-box-container {
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-container {
+  margin: 4px 4px 0 0;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.option-page-size {
+  .ui-dropdown {
+    min-width: 5.5em;
+  }
+}
+
+.selected-item-dropdown {
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+
+.selected-item-container {
+  position: relative;
+  height: 25px;
+}
+
+.selected-item-label {
+  font-size: 14px;
+  float: left;
+  margin-top: 4px;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.bottom-5 {
+  bottom: 5px;
+}
+
+.pad-l-110 {
+  padding-left: 110px;
+}
+
+.kt-content {
+  padding-top: 5px !important;
+}
+
+.mg-r-8 {
+  margin-right: 8px !important;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+body .ui-panelmenu .ui-panelmenu-header > a {
+  border: none;
+  background-color: transparent;
+}
+
+body .ui-panelmenu .ui-panelmenu-header:not(.ui-state-active) > a:hover {
+  outline: 0 none;
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body
+  .ui-panelmenu
+  .ui-panelmenu-header:not(.ui-state-active)
+  > a:hover
+  .ui-panelmenu-icon {
+  color: #ffffff;
+}
+body .ui-panelmenu .ui-panelmenu-header.ui-state-active > a {
+  border: none;
+  background-color: #007ad9;
+  color: #ffffff;
+}
+body .ui-panelmenu .ui-panelmenu-header.ui-state-active > a .ui-panelmenu-icon {
+  color: #ffffff;
+}
+
+body
+  .ui-panelmenu
+  .ui-panelmenu-header.ui-state-active
+  > a:hover
+  .ui-panelmenu-icon {
+  color: #ffffff;
+}
+
+body .ui-panelmenu .ui-panelmenu-header.ui-state-active > a:hover {
+  outline: 0 none;
+  border: 1px solid #005b9f;
+  background-color: #005b9f;
+  color: #ffffff;
+}
+
+body
+  .ui-panelmenu
+  .ui-panelmenu-header.ui-state-active
+  > a:hover
+  .ui-menuitem-text {
+  color: #ffffff;
+}
+
+body
+  .ui-panelmenu
+  .ui-panelmenu-header:not(.ui-state-active)
+  > a:hover
+  .ui-menuitem-text {
+  color: #ffffff;
+}
+
+body .ui-panelmenu .ui-panelmenu-header.ui-state-active > a .ui-menuitem-text {
+  color: #ffffff;
+}
+
+body .ui-panelmenu .ui-panelmenu-content {
+  border: none;
+  background-color: transparent;
+}
+
+.ui-panelmenu .ui-menuitem-text {
+  color: #a2a3b7;
+  font-weight: 400;
+}
+
+body .ui-panelmenu .ui-panelmenu-content .ui-menuitem .ui-menuitem-link:hover {
+  background-color: #000000;
+}
+body
+  .ui-panelmenu
+  .ui-panelmenu-content
+  .ui-menuitem
+  .ui-menuitem-link:hover
+  .ui-menuitem-icon,
+body
+  .ui-panelmenu
+  .ui-panelmenu-content
+  .ui-menuitem
+  .ui-menuitem-link:hover
+  .ui-panelmenu-icon {
+  color: #ffffff;
+}
+body
+  .ui-panelmenu
+  .ui-panelmenu-content
+  .ui-menuitem
+  .ui-menuitem-link:hover
+  .ui-menuitem-text {
+  color: #ffffff;
+}
+
+body .ui-panelmenu .ui-panelmenu-content .ui-menuitem .ui-menuitem-link {
+  padding: 10px 0px 10px 45px;
+}
+
+.display-item-center {
+  display: flex;
+  align-items: center;
+}
+
+.pad-l-10 {
+  padding-left: 10px;
+}
+
+.page-panel {
+  height: 100%;
+  width: 100%;
+  display: inline-table;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.content-page-panel {
+  height: 100%;
+  display: table;
+  margin: auto;
+}
+
+.content-page-panel > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.form-split {
+  .parent {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+  .child {
+    width: 50%;
+  }
+}
+
+.button-container-in-form {
+  float: right;
+  margin-top: 5px;
+}
+
+.button-container-in-form-left {
+  float: left;
+  margin-top: 5px;
+}
+.pos-container {
+  .pos-left-part {
+    .kt-content {
+      padding: 0 !important;
+    }
+  }
+}
+
+.pos-page {
+  .kt-header.kt-header--fixed {
+    left: 0px;
+  }
+}

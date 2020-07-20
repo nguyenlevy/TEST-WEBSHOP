@@ -1,0 +1,149 @@
+<form [formGroup]="formCustomer" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form"
+        >{{ ("CUSTOMER" | translate: "NAME") + " (*)" }}
+      </label>
+      <div class="d-flex flex-column max-width">
+        <input
+          pInputText
+          formControlName="name"
+          placeholder="{{ 'CUSTOMER' | translate: 'PLACEHOLDER_NAME' }}"
+          class="form-control fix-height"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+        />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">
+            <p-message
+              severity="error"
+              text="{{ 'CUSTOMER' | translate: 'NAME_REQUIRED' }}"
+            ></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{
+        ("CUSTOMER" | translate: "CUSTOMER_CODE") + " (*)"
+      }}</label>
+      <div class="d-flex flex-column max-width">
+        <input
+          pInputText
+          formControlName="customerCode"
+          placeholder="{{
+            'CUSTOMER' | translate: 'PLACEHOLDER_CUSTOMER_CODE'
+          }}"
+          class="form-control fix-height"
+          [ngClass]="{ 'is-invalid': submitted && f.customerCode.errors }"
+        />
+        <div
+          *ngIf="submitted && f.customerCode.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.customerCode.errors.required">
+            <p-message
+              severity="error"
+              text="{{ 'CUSTOMER' | translate: 'CUSTOMER_CODE_REQUIRED' }}"
+            ></p-message>
+          </div>
+          <div *ngIf="f.customerCode.errors.isDuplicate">
+            <p-message
+              severity="error"
+              text="{{ 'CUSTOMER' | translate: 'DUPLICATE_CUSTOMER_CODE' }}"
+            ></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{
+        "CUSTOMER" | translate: "PHONE_NUMBER"
+      }}</label>
+      <div class="d-flex flex-column max-width">
+        <input
+          pInputText
+          formControlName="phoneNumber"
+          class="form-control fix-height"
+        />
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{
+        "CUSTOMER" | translate: "EMAIL"
+      }}</label>
+      <div class="d-flex flex-column max-width">
+        <input
+          pInputText
+          formControlName="email"
+          class="form-control fix-height"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.email">
+            <p-message
+              severity="error"
+              text="{{ 'CUSTOMER' | translate: 'EMAIL_INVALID' }}"
+            ></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{
+        "CUSTOMER" | translate: "BIRTHDAY"
+      }}</label>
+      <div class="d-flex flex-column max-width">
+        <p-calendar
+          formControlName="birthday"
+          placeholder="{{ 'CUSTOMER' | translate: 'PLACEHOLDER_BIRTHDAY' }}"
+          class="full-width"
+          [showIcon]="false"
+          [style]="{ width: '100%' }"
+          dateFormat="dd-mm-yy"
+          appendTo="body"
+        >
+        </p-calendar>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{
+        "CUSTOMER" | translate: "GENDER"
+      }}</label>
+      <div class="d-flex flex-column max-width">
+        <p-radioButton
+          name="gender"
+          value="1"
+          label="{{ 'CUSTOMER' | translate: 'MALE' }}"
+          formControlName="gender"
+        ></p-radioButton>
+        <p-radioButton
+          name="gender"
+          value="0"
+          label="{{ 'CUSTOMER' | translate: 'FEMALE' }}"
+          formControlName="gender"
+        ></p-radioButton>
+      </div>
+    </div>
+  </div>
+  <hr class="col-12" />
+  <p-footer>
+    <div class="form-group custom-form-add button-container-in-form">
+      <button
+        icon="pi pi-save"
+        pButton
+        type="button"
+        label="{{ 'BUTTONS' | translate: 'SAVE' }}"
+        class="btn btn-primary mg-r-5"
+        (click)="onSubmit()"
+      ></button>
+      <button
+        icon="pi pi-times"
+        pButton
+        type="button"
+        label="{{ 'BUTTONS' | translate: 'CLOSE' }}"
+        class="ui-button-secondary"
+        (click)="close()"
+      ></button>
+    </div>
+  </p-footer>
+</form>

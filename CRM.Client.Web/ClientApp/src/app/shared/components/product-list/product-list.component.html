@@ -1,0 +1,15 @@
+<div class="agents-carousel mt-2">
+  <div class="swiper-container h-100 carousel-outer" [swiper]="config">
+    <div class="swiper-wrapper h-100">
+      <div *ngFor="let property of properties" class="swiper-slide item">
+        <app-product-item [property]="property" [viewType]="viewType" [viewColChanged]="viewCol" [isSale]="isSale"></app-product-item>
+      </div>
+    </div>
+    <button mat-mini-fab color="primary" class="swiper-button-prev swipe-arrow">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" class="swiper-button-next swipe-arrow">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<mat-card class="property-item p-2" [ngClass]="[viewType + '-item', 'column-'+column]"
+  [class.full-width-page]="fullWidthPage" fxLayout="row wrap" (mouseover)="onHoverItem()" (mouseout)="onOutItem()">
+
+  <div fxFlex="100" fxShrink="3" [fxFlex.gt-sm]="(viewType=='list') ? 40 : 100"
+    [fxFlex.sm]="(viewType=='list') ? 50 : 100" class="thumbnail-section">
+
+    <div fxLayout="row" class="property-status">
+      <span [style.background-color]="getStatusBgColor('Hot Offer')">Giảm 5%</span>
+    </div>
+
+
+    <div class="mat-card-image w-100 m-0">
+      <div (click)="viewProductDetail()">
+        <img [src]="appService.formatUrlImage(property)">
+      </div>
+
+      <div *ngIf="isSale">
+        <div class="button-cart" [style.display]="!displayAddShopping ? 'none':''" (click)="choiceProduct(property)">
+          <mat-icon>shopping_basket</mat-icon> &nbsp;&nbsp; <span>Thêm vào giỏ hàng</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div fxFlex="100" [fxFlex.gt-sm]="(viewType=='list') ? 60 : 100" [fxFlex.sm]="(viewType=='list') ? 50 : 100">
+
+    <div fxLayout="column" fxLayoutAlign="start stretch" class="h-100 pt-2" (click)="viewProductDetail()">
+
+      <mat-card-content class="mb-2">
+        <strong class="property-title">{{property?.Name}}</strong>
+      </mat-card-content>
+
+      <mat-card-content class="mb-0">
+        <div class="primary-color">
+          <span class="title-cost"><strong>{{property?.Cost}}đ</strong></span>
+          <span class="mx-2 text-right title-price"><i><s>{{property?.Price}}đ</s></i></span>
+        </div>
+
+      </mat-card-content>
+    </div>
+
+  </div>
+
+</mat-card>

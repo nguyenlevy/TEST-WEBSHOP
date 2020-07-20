@@ -1,0 +1,81 @@
+<div class="p-3 app-product-detail">
+    <div class="theme-container">
+        <div class="row" style="background-color: #fff;">
+            <div fxFlex="100" fxFlex.gt-sm="35" class="p-3">
+                <img [src]="appService.formatUrlImage(detailProduct)" class="product-img" />
+                <br>
+                <div class="img-detail">
+                    <img [src]="appService.formatUrlImage(detailProduct)"
+                        style="width: 10%; height: 40px; object-fit: cover; border: 2px;margin-right: 10px;margin-top: 10px;border: 1px solid #ccc;padding: 5px;" />
+                </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="65" class="container-product-content p-3">
+                <h1>{{detailProduct.Name}}</h1>
+                <hr class="mt-2 mb-2">
+                <br>
+                <h2 class="product-cost">Giá bán: {{detailProduct.Cost}}đ</h2>
+                <!-- <app-rating [ratingsCount]="5" [ratingsValue]="4"></app-rating> -->
+                <div class="divider mt-3 mb-2"></div>
+                <div>
+                    <p>Thương hiệu: <span *ngFor="let item of detailProduct.Brands">{{item.Name}}; </span>
+                    </p>
+                    <p>Xuất xứ: {{detailProduct.ProductManufacturer}}.</p>
+                </div>
+                <div class="divider mt-3 mb-2"></div>
+                <br>
+                <div>
+                    <!-- <a mat-raised-button class="mr-1 product-title-chat">
+                        <mat-icon class="mr-1">chat</mat-icon>Chat
+                    </a> -->
+                    <span class="mr-1">Số lượng: <input class="input-number" type="number" min="1"
+                            [(ngModel)]="detailProduct.quantity" (change)="changeQuantity($event.target.value)"
+                            (keyup)="changeQuantity($event.target.value)"></span>
+                    <a (click)="choiceProduct(detailProduct)" mat-raised-button class="product-title-add-cart mr-1">Thêm
+                        vào giỏ hàng</a>
+                    <!-- <a mat-raised-button class="pruduct-title-buy">Mua ngay</a> -->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wp-container_b mt-3" style="background-color: #fff;">
+            <div class="p-3 mb-3">
+                <div class="theme-container">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer"><strong>Chi tiết sản phẩm</strong></div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="mt-2 mb-2">THUỘC TÍNH SẢN PHẨM</div>
+                        <div class="divider"></div>
+                        <div *ngFor="let dataAttribute of listAttributeProduct, let i = index">
+                            <div class="mt-2 p-2" [style.background-color]="(i == 0 || i %2 == 0) ? '#f1f1f1':''">
+                                {{dataAttribute.AttributeLabel}}: <span
+                                    *ngFor="let item of dataAttribute.listAttributeValue">{{item.AttributeLabel}};
+                                </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="wp-container_b" *ngIf="appService.isDisplayViewed">
+            <div class="px-3 mb-3 container-viewed">
+                <div class="theme-container" *ngIf="appService.isDisplayViewed">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer"><strong>SẢN PHẨM ĐÃ XEM</strong></div>
+                        </div>
+                    </div>
+                    <app-product-list [listData]="listProductViewed" [isSale]="false"></app-product-list>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

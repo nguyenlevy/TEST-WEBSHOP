@@ -1,0 +1,16 @@
+<mat-card>
+    <img mat-card-image [routerLink]="['/news/detail']" [queryParams]="{Id: blog.Id}" [src]="appService.formatUrlImage(blog)" alt="" class="swiper-lazy d-block">
+    <mat-card-content [matTooltip]="blog.desc">
+        <a [routerLink]="['/news/detail']" [queryParams]="{Id: blog.Id}"
+            class="title-blog"><strong>{{blog.Title}}</strong></a>
+        <p><i>{{blog.CreatedDate | date:'dd/MM/yyyy'}}</i></p>
+        <p class="mt-3 displayContent">{{blog.Content}}</p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions fxLayoutAlign="space-between center">
+        <div>
+            <a [routerLink]="['/news/detail']" [queryParams]="{Id: blog.Id}" mat-button color="primary"
+                class="uppercase">Xem thêm</a>
+        </div>
+    </mat-card-actions>
+</mat-card>

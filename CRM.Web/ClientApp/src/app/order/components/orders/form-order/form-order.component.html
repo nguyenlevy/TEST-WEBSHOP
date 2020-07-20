@@ -1,0 +1,222 @@
+<div class="form-split form-order-container" *ngIf="!isLoading">
+  <form [formGroup]="formOrder" (ngSubmit)="onSubmit()">
+    <div class="parent">
+      <div class="child mg-r-10">
+        <div class="modal-body">
+          <div class="details-title">
+            <i class="fa fa-info-circle"></i>
+            <span>{{'ORDER' | translate: 'ORDER_INFORMATION'}}</span>
+          </div>
+          <hr class="col-12">
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'ORDER_CODE'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input disabled readonly pInputText formControlName="orderCode"
+                     class="form-control fix-height" placeholder="{{'ORDER' | translate: 'SELF_CREATED_SYSTEM'}}">
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label *ngIf="orderType == OrderType.Sale || orderType == OrderType.Order" class="label-edit label-form" >{{('ORDER' | translate : 'CUSTOMER') + ' (*)'}}</label>
+            <label *ngIf="orderType == OrderType.ReturnSupplier" class="label-edit label-form" >{{('ORDER' | translate : 'SUPPLIER') + ' (*)'}}</label>
+            <div class="d-flex flex-column max-width">
+              <p-dropdown formControlName="customerId" [virtualScroll]="true" [itemSize]="10" [styleClass]="'dropdown-custom'" [style]="{'width':'100%'}"
+                          [options]="customersOption" filter="true" [ngClass]="{ 'is-invalid': submitted && f.customerId.errors }"
+                          placeholder="{{getPlaceholderForCustomerOption()}}" [style]="{'width':'100%'}">
+                <ng-template let-item pTemplate="selectedItem">
+                  <span class="selected-item-dropdown">{{item.label}}</span>
+                </ng-template>
+                <ng-template let-customer pTemplate="item">
+                  <div class="ui-helper-clearfix selected-item-container">
+                    <div class="selected-item-label">{{customer.label}}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+              <div *ngIf="submitted && f.customerId.errors">
+                <div *ngIf="f.customerId.errors.required">
+                  <p-message severity="error" text="{{getMessageForRequiredCustomer()}}"></p-message>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'SALE_DATE'}}</label>
+            <div class="d-flex flex-column max-width">
+              <p-calendar formControlName="saleDateUtc" class="full-width" [showIcon]="false"
+                          [style]="{'width': '100%'}" dateFormat="dd-mm-yy" appendTo="body">
+              </p-calendar>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form" >{{'ORDER' | translate : 'SELLER'}}</label>
+            <div class="d-flex flex-column max-width">
+              <p-dropdown formControlName="sellerId" [virtualScroll]="true" [itemSize]="10" [styleClass]="'dropdown-custom'" [style]="{'width':'100%'}"
+                          [options]="sellerOptions" filter="true"
+                          placeholder="{{'ORDER' | translate: 'SELECT_SELLER'}}">
+                <ng-template let-item pTemplate="selectedItem">
+                  <span class="selected-item-dropdown">{{item.label}}</span>
+                </ng-template>
+                <ng-template let-seller pTemplate="item">
+                  <div class="ui-helper-clearfix selected-item-container">
+                    <div class="selected-item-label">{{seller.label}}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'NOTE'}} </label>
+            <div class="d-flex flex-column max-width">
+              <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="orderNote" placeholder="{{'ORDER' | translate: 'NOTE_HERE'}}">
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="child mg-r-10">
+        <div class="modal-body" *ngIf="orderType == OrderType.Sale || orderType == OrderType.ReturnSupplier">
+          <div class="details-title">
+            <i class="fa fa-info-circle"></i>
+            <span>{{'ORDER' | translate: 'PAYMENT_INFORMATION'}}</span>
+          </div>
+          <hr class="col-12">
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'PAYMENT_METHOD'}} </label>
+            <div class="d-flex flex-column max-width">
+              <p-dropdown formControlName="paymentMethodId" [virtualScroll]="true" [itemSize]="10" [styleClass]="'dropdown-custom'" [style]="{'width':'100%'}"
+                          [options]="paymentMethodOptions"
+                          placeholder="{{'ORDER' | translate: 'SELECT_PAYMENT_METHOD'}}">
+              </p-dropdown>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'ORDER_PRICE'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input disabled readonly pInputText formControlName="orderPrice" class="form-control fix-height">
+            </div>
+          </div>
+          <div class="form-group custom-form-add" *ngIf="orderType == OrderType.Sale">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'DISCOUNT'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input disabled readonly pInputText formControlName="orderDiscount" class="form-control fix-height">
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'TOTAL'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input disabled readonly pInputText formControlName="orderTotal" class="form-control fix-height">
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'PAID'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input [type]="calTotalDebt()" pInputText formControlName="orderPaid" class="form-control fix-height">
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'LEFT'}} </label>
+            <div class="d-flex flex-column max-width">
+              <input disabled readonly pInputText formControlName="orderDebt" class="form-control fix-height">
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" *ngIf="orderType == OrderType.Order">
+          <div class="details-title">
+            <i class="fa fa-info-circle"></i>
+            <span>{{'ORDER' | translate: 'DELIVERY_INFORMATION'}}</span>
+          </div>
+          <hr class="col-12">
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{('ORDER' | translate : 'CARRIER') + ' (*)'}} </label>
+            <div class="d-flex flex-column max-width">
+              <p-dropdown formControlName="carrierId" [virtualScroll]="true" [itemSize]="10" [styleClass]="'dropdown-custom'" [options]="carrierOptions"
+                          placeholder="{{'ORDER' | translate: 'SELECT_CARRIER'}}" [style]="{'width':'100%'}"
+                          [ngClass]="{ 'is-invalid': submitted && f.carrierId.errors }">
+              </p-dropdown>
+              <div *ngIf="submitted && f.carrierId.errors">
+                <div *ngIf="f.carrierId.errors.required">
+                  <p-message severity="error" text="{{'ORDER' | translate: 'CARRIER_REQUIRED'}}"></p-message>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'DELIVERY_DATE'}}</label>
+            <div class="d-flex flex-column max-width">
+              <p-calendar formControlName="deliveryDate" class="full-width" [showIcon]="false"
+                          [style]="{'width': '100%'}" dateFormat="dd-mm-yy" appendTo="body">
+              </p-calendar>
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form">{{'ORDER' | translate : 'SHIPPER'}}</label>
+            <div class="d-flex flex-column max-width">
+              <input pInputText formControlName="shipper" class="form-control fix-height">
+            </div>
+          </div>
+          <div class="form-group custom-form-add">
+            <label class="label-edit label-form"></label>
+            <div class="d-flex flex-column max-width">
+              <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="shipmentNote" placeholder="{{'ORDER' | translate: 'NOTE_HERE'}}">
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-body">
+    <button icon="pi pi-save" pButton type="button" label="{{'BUTTONS' | translate : 'SAVE'}}" class="btn btn-primary mg-r-5" (click)="onSubmit()"></button>
+    <button icon="pi pi-times" pButton type="button" label="{{'BUTTONS' | translate : 'CLOSE'}}" class="ui-button-secondary" (click)="close()"></button>
+  </div>
+  <div class="product-search-container">
+    <div class="modal-body">
+      <div class="max-width display-flex">
+        <p-dropdown [(ngModel)]="selectedProductId" [virtualScroll]="true" [itemSize]="10" [styleClass]="'dropdown-custom'"
+                    [options]="productOptions" filter="true" placeholder="{{'ORDER' | translate: 'ENTER_BARCODE'}}" [style]="{'width':'400px'}"
+                    (onChange)="onSelectProduct()">
+        </p-dropdown>
+      </div>
+      <div class="product-list">
+        <p-table [value]="selectedProductList" [columns]="colProducts">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" [ngStyle]="{'width': col.width}" class="column-header">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngSwitch]="col.header" class="cell-center-align">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="rowData">
+              <td *ngFor="let col of columns;" [ngSwitch]="col.field" class="cell-center-align">
+                <div *ngSwitchCase="'order'">
+                  {{rowIndex + 1}}
+                </div>
+                <div *ngSwitchCase="'amount'">
+                  <input (change)="setPriceForSelectedProducts()" class="cell-center-align input-amount" type="number" [(ngModel)]="rowData[col.field]" step="1">
+                </div>
+                <div *ngSwitchDefault>{{rowData[col.field]}}</div>
+                <div *ngSwitchCase="'actionDelete'">
+                  <a href="javascript:void(0);" class="btn sm-button btn-primary btn-icon-sm"
+                     (click)="deleteProductFromList(rowData['id'])">{{'BUTTONS' | translate : 'DELETE'}}</a>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div *ngIf="submitted">
+          <div *ngIf="selectedProductList.length === 0">
+            <p-message severity="error" text="{{'ORDER' | translate: 'PRODUCT_REQUIRED'}}"></p-message>
+          </div>
+          <div *ngIf="isShowProductsNotAvailable">
+            <p-message severity="error" text="{{messageProductsNotAvailable}}"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

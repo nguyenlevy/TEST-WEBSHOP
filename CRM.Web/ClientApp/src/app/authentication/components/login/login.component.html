@@ -1,0 +1,35 @@
+<div class="page-panel">
+  <div class="content-page-panel">
+    <div class="login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="isInCorrectUser" class="incorrect-user">
+          <p-message severity="error" text="{{'LOGIN' | translate: 'USERNAME_OR_PASSWORD_INCORRECT'}}"></p-message>
+        </div>
+        <div class="form-group">
+          <label>{{'LOGIN' | translate: 'USERNAME'}}</label>
+          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">
+              <p-message severity="error" text="{{'LOGIN' | translate: 'USERNAME_REQUIRED'}}"></p-message>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>{{'LOGIN' | translate: 'PASSWORD'}}</label>
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">
+              <p-message severity="error" text="{{'LOGIN' | translate: 'PASSWORD_REQUIRED'}}"></p-message>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            {{'LOGIN' | translate: 'BUTTON_TITLE'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

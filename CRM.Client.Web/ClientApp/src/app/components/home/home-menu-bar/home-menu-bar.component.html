@@ -1,0 +1,15 @@
+<div fxLayout="row wrap" class="agents-wrapper">
+    <ng-container *ngFor="let data of listBar">
+        <div fxFlex="100" fxFlex.gt-md="25" fxFlex.md="25" fxFlex.sm="50" class="p-0">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="mat-icon-xlg" color="primary">business</mat-icon>
+                    <div>
+                        <h2 class="capitalize fw-600 mx-2">{{data.Title}}</h2>
+                        <div class="capitalize fw-600 mx-2">{{data.Content}}</div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,107 @@
+<div
+  class="kt-content kt-grid__item kt-grid__item--fluid Page product-container"
+>
+  <div class="kt-portlet">
+    <div class="kt-portlet__body kt-portlet__body--fit">
+      <div
+        class="kt-grid kt-wizard-v1 kt-wizard-v1--white"
+        id="kt_wizard_v1"
+        data-ktwizard-state="first"
+      >
+        <div class="custom-form">
+          <div class="product-category-filter">
+            <p-dropdown
+              [options]="productCategoryOptions"
+              [(ngModel)]="selectedProductCategory"
+              [style]="{ 'min-width': '60%', width: '60%' }"
+              appendTo="body"
+              (onChange)="
+                dt.filter(
+                  selectedProductCategory.value,
+                  'productCategoryId',
+                  'equals'
+                )
+              "
+              optionLabel="label"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span class="selected-item-dropdown">{{ item.label }}</span>
+              </ng-template>
+              <ng-template let-productCategory pTemplate="item">
+                <div class="ui-helper-clearfix selected-item-container">
+                  <div class="selected-item-label">
+                    {{ productCategory.label }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="product-list">
+            <p-table
+              #dt
+              [columns]="cols"
+              [value]="mainItems"
+              selectionMode="single"
+              [scrollable]="true"
+              [paginator]="true"
+              [rows]="amountToDisplay"
+              (onPage)="paginate($event)"
+              scrollHeight="75vh"
+              styleClass="grid-product-table"
+            >
+              <ng-template pTemplate="colgroup" let-columns>
+                <colgroup>
+                  <col
+                    *ngFor="let col of columns"
+                    [ngStyle]="{ width: col.width }"
+                    class="column-header"
+                  />
+                  <col
+                    *ngFor="let col of colsAction"
+                    [ngStyle]="{ width: col.width }"
+                    class="column-header"
+                  />
+                </colgroup>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-rowData
+                let-columns="columns"
+                let-rowIndex="rowIndex"
+                styleClass="test-abc"
+              >
+                <tr
+                  [pSelectableRow]="rowData"
+                  (click)="selectProduct(rowData)"
+                  [ngClass]="{ 'grid-product-item': true }"
+                >
+                  <td>
+                    <img
+                      class="product-image"
+                      [attr.src]="
+                        rowData['productImage']
+                          ? rowData['productImage']
+                          : 'assets/images/img_placeholder.jpg'
+                      "
+                    />
+                    <div>{{ rowData["name"] }}</div>
+                    <div>Mã: {{ rowData["productCode"] }}</div>
+                    <div>
+                      <span
+                        ><b>{{ rowData["price"] }} |</b></span
+                      >
+                      <span
+                        ><b>SL: {{ rowData["amount"] }}</b></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-confirmDialog [style]="{ width: '350px' }"></p-confirmDialog>

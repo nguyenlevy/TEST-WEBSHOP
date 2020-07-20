@@ -1,0 +1,29 @@
+<!-- header-->
+
+<div class="pos-page" *ngIf="isPos; else mainBlock">
+  <app-nav-menu-top></app-nav-menu-top>
+  <div style="padding-top: 60px;">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<ng-template #mainBlock>
+  <app-nav-menu-top></app-nav-menu-top>
+  <!-- end-header-->
+  <app-nav-menu-left></app-nav-menu-left>
+  <!-- begin:: Aside -->
+  <!-- end:: Aside -->
+
+  <div
+    class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
+    id="kt_wrapper"
+    style="padding-top: 80px;"
+  >
+    <breadcrumb></breadcrumb>
+    <!-- begin:: Header -->
+    <!-- end:: Header -->
+    <router-outlet></router-outlet>
+    <!-- begin:: Footer -->
+    <!-- end:: Footer -->
+  </div>
+</ng-template>

@@ -1,0 +1,67 @@
+<mat-toolbar id="top-toolbar" class="top-toolbar-search">
+  <div class="theme-container">
+    <div fxLayout="row wrap">
+      <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-xs="20">
+
+        <a [routerLink]="['/']">
+          <div class="sub-home">
+            <mat-icon>home</mat-icon>
+            Trang chủ
+          </div>
+        </a>
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxLayoutAlign="center center">
+        <div class="search-container">
+          <input matInput autocomplete="off" class="ipt-search" [(ngModel)]="keyword"
+            (keyup.enter)="searchProductByKeyWord($event.target.value)">
+          <span class="icon-del" (click)="removeKeyWord()" [style.display]="keyword ? '':'none'">x</span>
+          <span class="icon-del-1" [style.display]="!keyword ? '':'none'"></span>
+          <button mat-flat-button type="submit" class="search-button" color="primary"
+            (click)="searchProductByKeyWord(keyword)">
+            <mat-icon>search</mat-icon> Tìm
+            kiếm
+          </button>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.gt-xs="30" fxLayoutAlign="center center">
+        <a [routerLink]="['/cart']">
+          <mat-icon>shopping_cart</mat-icon> <span *ngIf="appService.totalProductSelected > 0"
+            class="icon-text">{{appService.totalProductSelected}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar id="main-toolbar" class="mat-elevation-z2 mt-1 top-toolbar-menu">
+  <div class="theme-container">
+    <div fxLayout="row wrap">
+      <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-xs="50">
+
+        <a [routerLink]="['/']" (mouseover)="hoverMenu()" (mouseout)="hoverOutMenu()">
+          <div fxLayout="row" fxLayoutAlign="start center " class="sub-all-category">
+            <mat-icon>menu</mat-icon> &nbsp;
+            TẤT CẢ DANH MỤC
+          </div>
+        </a>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+        <div fxShow="false" fxShow.gt-sm class="horizontal-menu">
+          <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
+        </div>
+      </div>
+      <div [style.display]="disPlayCategoryHover?'':'none'" class="theme-container container-vertical-menu-hover">
+        <div fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-xs="50" >
+            <app-home-vertical-menu  [listData]="listCategorys" (sendDataCategoryParent)="choiceCategoryParent($event)" (mouseover)="hoverMenu()" (mouseout)="hoverOutMenu()">
+            </app-home-vertical-menu>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="60" fxFlex.gt-xs="50" [style.display]="disPlayCategoryChild ? '':'none'"  >
+            <app-home-vertical-menu-child [listData]="listCategoryChild" (mouseover)="hoverMenu()" (mouseout)="hoverOutMenu()"></app-home-vertical-menu-child>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

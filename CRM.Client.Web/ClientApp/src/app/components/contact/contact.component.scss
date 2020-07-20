@@ -1,0 +1,42 @@
+.contact-map .sebm-google-map-container {
+  height: 250px;
+  width: 600px;
+}
+.w-100 {
+  margin-bottom: 1px;
+}
+.title-tab-customer {
+  font-size: 16px;
+  text-transform: uppercase;
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 2px solid #3f51b5;
+  transform: translateY(1px);
+}
+
+.container-new {
+  font-size: 14px;
+}
+.new-item {
+  border-radius: 3px;
+  background-color: #ccc;
+  color: #000;
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+  padding: 2px;
+}
+
+.container-contact{
+  font-size: 12px;
+}

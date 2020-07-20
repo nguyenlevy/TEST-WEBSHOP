@@ -1,0 +1,11 @@
+<div class="home-vertical-menu">
+    <ng-container *ngFor="let dataCategorys of listCategorys, let idex = index">
+        <div class="menu-item">
+            <a mat-button fxLayout="row" fxLayoutAlign="start center" [routerLink]="'/product'"
+                [style.backgroundColor]="dataCategorys.hover?'#f1f1f1':''" [queryParams]="{CategoryId:dataCategorys.Id}"
+                (mouseenter)="hoverCategorys(dataCategorys.Id)">
+                <span class="menu-title">{{dataCategorys.Name}}</span>
+            </a>
+        </div>
+    </ng-container>
+</div>

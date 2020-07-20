@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "app/theme/styles/spinner";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~swiper/dist/css/swiper.min.css";
+@import "app/theme/styles/base";
+@import "app/theme/styles/spaces";
+@import "app/theme/styles/theme";
+@import "app/theme/styles/rtl";
+
+.mat-tab-header {
+  margin-bottom: 0px !important;
+}
+
+.swiper-slide {
+  height: auto !important;
+}
+.app-order {
+  .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+  .mat-header-cell {
+    font-size: inherit;
+  }
+}
+
+body {
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}

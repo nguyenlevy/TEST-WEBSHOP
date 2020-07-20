@@ -1,0 +1,59 @@
+@import "../../../../app/theme/styles/mixins";
+
+.menu-expand-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.menu-item {
+  width: 100%;
+  .mat-button {
+    width: 100%;
+    // font-weight: 400;
+    height: 24px;
+    &.expanded {
+      .menu-expand-icon {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .mat-button-wrapper {
+    padding-left: 16px;
+  }
+}
+
+.sub-menu {
+  @include menu-level-padding("ltr");
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.25s ease-out;
+  -moz-transition: max-height 0.25s ease-out;
+  transition: max-height 0.25s ease-out;
+  .mat-button {
+    padding-left: 36px;
+  }
+  &.show {
+    max-height: 500px;
+    -webkit-transition: max-height 0.25s ease-in;
+    -moz-transition: max-height 0.25s ease-in;
+    transition: max-height 0.25s ease-in;
+  }
+}
+
+.home-vertical-menu-child {
+  background-color: #C3D2D5;
+  // height: 340px; 
+  position: relative;
+  overflow: hidden;
+  margin-left: -10px;
+}
+.menu-item-hover {
+  z-index: 6;
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  margin-top: -38px;
+}

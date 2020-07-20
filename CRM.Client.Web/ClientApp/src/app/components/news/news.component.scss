@@ -1,0 +1,32 @@
+.review-author{
+    border: 1px solid;
+}
+.divider{
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mat-list-item{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mat-list-avatar{
+    border-radius: 0% !important;
+}
+.category-title{
+    font-size: 16px;
+}
+.displayContent {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    text-overflow: ellipsis !important;
+    -webkit-line-clamp: 2 !important;
+    height: 2rem !important;
+}
+.uppercase {
+    font-size: 18px;
+}
+.title-blog {
+    cursor: pointer;
+}
+.title-blog:hover {
+    color: rgba(81, 203, 238, 1);
+}

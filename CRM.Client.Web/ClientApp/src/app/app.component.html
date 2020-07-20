@@ -1,0 +1,8 @@
+<app-menu-header></app-menu-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<simple-notifications></simple-notifications>
+<div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top" (click)="scrollToTop()">
+    <mat-icon>arrow_upward</mat-icon>
+</div>
+

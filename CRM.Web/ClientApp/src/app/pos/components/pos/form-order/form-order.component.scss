@@ -1,0 +1,41 @@
+.form-order-container {
+  .details-title {
+    font-size: 20px;
+    color: #0b87c9;
+  }
+  .row {
+    display: table;
+    width: 70%;
+    table-layout: fixed;
+    border-spacing: 5px;
+  }
+  .column {
+    display: table-cell;
+  }
+  .dropdown-custom {
+    min-width: 50px;
+  }
+
+  .ui-inputtext {
+    width: 100%;
+  }
+
+  .label-edit {
+    min-width: 125px;
+    text-align: left;
+  }
+
+  .product-search-container {
+    width: 100%;
+    min-height: 488px;
+    background-color: #e2e2e2;
+    .product-list {
+      margin-top: 10px;
+      border: 1px solid #c8c8c8;
+
+      .input-amount {
+        width: 70%;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div class="home-vertical-menu-child p-2">
+    <div class="theme-container" >
+        <div fxLayout="row wrap">
+            <ng-container *ngFor="let dataCategorys of listCategoryChild, let idex = index">
+                <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.gt-xs="50"
+                    [style.border-right]="checkBorder(idex) ?'1px solid':'none'">
+
+                    <div class="menu-item">
+                        <a mat-button fxLayout="row" fxLayoutAlign="start center" [routerLink]="'/product'"
+                            [queryParams]="{CategoryId:dataCategorys.Id}">
+                            <span class="menu-title"><strong>{{dataCategorys.Name}}</strong></span>
+                        </a>
+                    </div>
+                    <ng-container *ngFor="let data of dataCategorys.listChildren, let idex = index">
+                        <div class="menu-item">
+                            <a mat-button fxLayout="row" fxLayoutAlign="start center" [routerLink]="'/product'"
+                                [queryParams]="{data:dataCategorys.Id}">
+                                <span class="menu-title">{{data.Name}}</span>
+                            </a>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<form [formGroup]="formSupplier" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{('SUPPLIER' | translate : 'NAME') + ' (*)'}} </label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="name" placeholder="{{'SUPPLIER' | translate : 'PLACEHOLDER_NAME'}}"
+               class="form-control fix-height" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">
+            <p-message severity="error" text="{{'SUPPLIER' | translate: 'NAME_REQUIRED'}}"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{('SUPPLIER' | translate : 'CUSTOMER_CODE') + ' (*)'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="customerCode" placeholder="{{'SUPPLIER' | translate : 'PLACEHOLDER_CUSTOMER_CODE'}}"
+               class="form-control fix-height" [ngClass]="{ 'is-invalid': submitted && f.customerCode.errors }">
+        <div *ngIf="submitted && f.customerCode.errors" class="invalid-feedback">
+          <div *ngIf="f.customerCode.errors.required">
+            <p-message severity="error" text="{{'SUPPLIER' | translate: 'CUSTOMER_CODE_REQUIRED'}}"></p-message>
+          </div>
+          <div *ngIf="f.customerCode.errors.isDuplicate">
+            <p-message severity="error" text="{{'SUPPLIER' | translate: 'DUPLICATE_CUSTOMER_CODE'}}"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{'SUPPLIER' | translate : 'PHONE_NUMBER'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="phoneNumber" class="form-control fix-height">
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{'SUPPLIER' | translate : 'EMAIL'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="email" class="form-control fix-height" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.email">
+            <p-message severity="error" text="{{'SUPPLIER' | translate: 'EMAIL_INVALID'}}"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{'SUPPLIER' | translate : 'ADDRESS'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="address" class="form-control fix-height">
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{'SUPPLIER' | translate : 'TAX_CODE'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="taxCode" class="form-control fix-height">
+      </div>
+    </div>
+    <div class="form-group custom-form-add">
+      <label class="label-edit label-form">{{'SUPPLIER' | translate : 'NOTE'}}</label>
+      <div class="d-flex flex-column max-width">
+        <input pInputText formControlName="note" class="form-control fix-height">
+      </div>
+    </div>
+  </div>
+  <hr class="col-12">
+  <p-footer>
+    <div class="form-group custom-form-add button-container-in-form">
+      <button icon="pi pi-save" pButton type="button" label="{{'BUTTONS' | translate : 'SAVE'}}" class="btn btn-primary mg-r-5" (click)="onSubmit()"></button>
+      <button icon="pi pi-times" pButton type="button" label="{{'BUTTONS' | translate : 'CLOSE'}}" class="ui-button-secondary" (click)="close()"></button>
+    </div>
+  </p-footer>
+</form>

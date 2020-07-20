@@ -1,0 +1,170 @@
+table {
+  width: 100%;
+}
+
+.theme-container.container_b {
+  .wp-container_b {
+    padding: 10px 1rem;
+    background-color: #f1f1f1;
+  }
+}
+.wp-table {
+  font-family: Montserrat;
+  margin-top: 50px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+  table {
+    tr td,
+    tr th {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+    border: 1px solid #ccc;
+    thead {
+      background-color: #f1f1f1;
+      display: none;
+    }
+    tbody {
+      background-color: #fff;
+    }
+    tfoot {
+      background-color: #f1f1f1;
+    }
+  }
+}
+.wp-container_b {
+  .px-3.mb-3 {
+    padding: 10px 0px;
+    margin-bottom: 0px !important;
+    background: #fff;
+    border: 10px solid #ccc;
+    padding: 15px;
+    h2 {
+      padding: 5px 0px 19px 0px;
+      position: relative;
+      &::after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+      }
+    }
+  }
+}
+.wp-table-b table thead,
+.wp-table-b table tfoot {
+  background: #f7f7f7;
+}
+.wp-table-b table tbody {
+  background: #ffffff;
+}
+.wp-table-b table thead tr th button {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+.wp-table-b table thead tr th button i {
+  margin-right: 5px;
+}
+.wp-table-b table tr th,
+.wp-table-b table tr td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 13px;
+}
+.wp-table-b table td .img img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+.wp-table-b table thead th:first-child {
+  text-align: left;
+}
+.wp-table-b table tbody td:first-child,
+.wp-table-b table tbody td:nth-child(2) {
+  text-align: left;
+}
+.wp-table-b table tbody input.input-number {
+  width: 60px;
+  height: 40px;
+  border: 1px solid #ccc;
+  padding: 0px 6px;
+}
+.wp-table-b table tbody td .h2-title {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #7db828;
+}
+.wp-table-b table tbody td .post {
+  color: #377698;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+.wp-table-b table tbody td .sale span {
+  padding: 0px 3px;
+}
+.price-old {
+  color: #999;
+  text-decoration: line-through;
+}
+i.fa-times-circle {
+  font-size: 16px;
+  color: #7db82a;
+}
+i.fa-times-circle:hover {
+  color: #e4101e;
+}
+.price-ft {
+  color: #af0d24;
+}
+a {
+  text-decoration: none;
+}
+.tb-list-product > thead > tr {
+  th {
+    font-size: 1rem;
+  }
+}
+.tb-list-product > tfoot > tr {
+  td {
+    font-size: 1rem;
+  }
+}
+.divider {
+  border-top: 1px solid;
+}
+.category-container {
+  border-bottom: 1px solid #3f51b5;
+}
+.title-tab-customer {
+  font-size: 14px;
+  text-transform: uppercase;
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 2px solid #3f51b5;
+  transform: translateY(1px);
+}
+.container-viewed {
+  background-color: #f1f1f1;
+}
+.text-info {
+  color: #31708f;
+}

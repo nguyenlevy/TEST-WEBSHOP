@@ -1,0 +1,94 @@
+<div class="p-3">
+    <div class="theme-container">
+        <div class="row">
+            <div fxFlex="100" fxFlex.gt-sm="50" class="p-3">
+                <!-- <mat-tab-group mat-align-tabs="left" class="pricing-tabs">
+                    <mat-tab label="BÁCH HÓA THIÊN NHIÊN">
+                       
+                    </mat-tab>
+                </mat-tab-group> -->
+
+                <div class="theme-container">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer"><strong>TIN TỨC & SỰ KIỆN</strong></div>
+                        </div>
+                    </div>
+                    <div class="mt-2 container-new">
+                        <div>Chuyên cung cấp sản phẩm chăm sóc sức khỏe & sắc đẹp nguồn gốc 100% từ thiên nhiên</div>
+
+                        <div fxLayoutAlign="start center" class="mt-2">
+                            <mat-icon class="new-item">
+                                call</mat-icon><span class="mx-2">Kinh doanh và tư vấn</span>
+                        </div>
+                        <div fxLayoutAlign="start center " class="mt-2">
+                            <mat-icon class="new-item">
+                                call</mat-icon><span class="mx-2">Đại lý - Đối tác</span>
+                        </div>
+                        <div fxLayoutAlign="start center " class="mt-2">
+                            <mat-icon class="new-item">
+                                call</mat-icon><span class="mx-2">Khiếu nại - Phàn nàn</span>
+                        </div>
+                        <div fxLayoutAlign="start center" class="mt-2">
+                            <mat-icon class="new-item">email</mat-icon><span class="mx-2">Email:</span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="contact-map">
+                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true"
+                                [fullscreenControl]="true">
+                                <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="false"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="40" class="p-3">
+                <div class="theme-container">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer"><strong>GỬI LIÊN HỆ</strong></div>
+                        </div>
+                    </div>
+                    <div  class="container-contact mt-2">
+                        <div>
+                            <ng-container [formGroup]="dataContact">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Họ và tên</mat-label>
+                                    <input formControlName="Name" matNativeControl required matInput matInput
+                                        placeholder="Họ và tên bạn.." autocomplete="off">
+                                </mat-form-field>
+
+                            </ng-container>
+                        </div>
+                        <div>
+                            <ng-container [formGroup]="dataContact">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Số điện thoại</mat-label>
+                                    <input formControlName="PhoneNumber" matNativeControl required matInput
+                                        placeholder="Số điện thoại nhận hàng.." autocomplete="off">
+                                </mat-form-field>
+
+                            </ng-container>
+
+                        </div>
+                        <div>
+                            <mat-form-field appearance="outline" class="w-100" style="line-height: 2.125;">
+                                <mat-label>Nội dung liên hệ</mat-label>
+                                <textarea [(ngModel)]="Note" matInput placeholder="Nội dung liên hệ"
+                                    rows="6"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button (click)="SendContact()" mat-raised-button style="background-color: limegreen;"
+                                class="uppercase" class="w-100" type="submit">
+                                <mat-icon>near_me</mat-icon>
+                                Gửi đi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

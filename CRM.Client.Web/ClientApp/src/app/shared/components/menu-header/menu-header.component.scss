@@ -1,0 +1,87 @@
+.top-toolbar-search {
+  height: 40px;
+  background-color: #1976d2;
+  .sub-home {
+    display: flex;
+    align-items: center;
+  }
+}
+.top-toolbar-search a {
+  text-decoration: none;
+  color: #fff;
+}
+.top-toolbar-menu {
+  height: 50px !important;
+  position: relative;
+  background-color: #ffffff;
+  color: #495057;
+  .sub-all-category {
+    height: 38px;
+    font-size: 14px;
+  }
+  .container-vertical-menu-hover {
+    position: absolute;
+    top: 45px;
+  }
+}
+.top-toolbar-menu a {
+  text-decoration: none;
+  color: #495057;
+}
+
+.search-button {
+  border-radius: 0px 3px 3px 0;
+  background-color: #f5a623;
+  width: 106px !important;
+  height: 30px;
+  padding: 0px 5px;
+}
+
+.search-container {
+  /* max-width: 50%; */
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.ipt-search {
+  width: calc(100% - 136px);
+  outline: none !important;
+  border: none !important;
+  height: 1.2rem;
+  padding: 5px;
+  color: #495057;
+  font-size: 14px;
+}
+
+.icon-del {
+  width: 20px;
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #c7c7cd;
+  border-radius: 50%;
+  color: #fff;
+}
+.icon-del-1 {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: inherit;
+}
+
+.icon-text {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: -11px;
+  position: absolute;
+}

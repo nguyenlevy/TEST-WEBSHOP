@@ -1,0 +1,19 @@
+<div class="home-vertical-menu mb-3">
+    <div class="menu-item">
+        <h2 fxLayout="row" fxLayoutAlign="start center" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:true}" [id]="'menu-item-'">
+            Trang chủ <mat-icon>keyboard_arrow_right</mat-icon> <span class="menu-title"
+                style="font-weight: normal !important;">{{newService.dataCategory?.Label}}</span>
+            <mat-icon>keyboard_arrow_right</mat-icon> <span class="menu-title"
+                style="font-weight: normal !important;">{{detailBlog?.Title}}</span>
+        </h2>
+    </div>
+</div>
+<mat-card-header fxLayoutAlign="left center">
+    <mat-card-title class="uppercase">{{detailBlog.Title}}</mat-card-title>
+</mat-card-header>
+<div class="divider mt-2 mb-2"></div>
+<div class="theme-container">
+    <img [src]="detailBlog.Image" class="mw-100">
+    <p class="title-content">{{detailBlog.Content}}</p>
+</div>

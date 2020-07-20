@@ -1,0 +1,180 @@
+<div class="p-3 app-order">
+    <div class="theme-container" style="min-height: 60%;">
+
+        <div class="theme-container" *ngIf="!isHaveProductCart">
+            <div fxFlex="100" fxFlex.gt-sm="100">
+                <div class="mt-2 mb-2"><span style="font-size: 1.4rem;font-weight: 700;">Thông tin đặt hàng</span></div>
+                <div style="text-align: center;" class="theme-container">
+                    <mat-icon style="color: #e5101d;font-size: 5rem;margin-left: -2.5rem;cursor: context-menu;">
+                        shopping_cart</mat-icon>
+                    <div style="font-size: 1.4rem;cursor: context-menu;">Giỏ hàng đang trống</div>
+                    <div class="mt-2">
+                        <a routerLink="/home"
+                            style="cursor: pointer;;font-size: 1.2rem; font-size: 1.2rem;padding: 4px 8px;background-color: rgb(244, 67, 54);color: #fff;border-radius: 4px;">Tiếp
+                            tục mua sắm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="px-3 mb-3" *ngIf="isHaveProductCart">
+            <div class="theme-container">
+                <div fxLayout="row wrap">
+                    <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                        <div class="title-tab-customer"><strong>THÔNG TIN ĐẶT HÀNG</strong></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div fxFlex="100" fxFlex.gt-sm="66.6" class="p-3">
+                        <div class="m-1">
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Sử dụng tài khoản có sẵn</mat-radio-button>
+                                <mat-radio-button value="2">Đặt hàng không cần đăng ký</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div>
+                            <ng-container [formGroup]="dataContact">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Họ và tên</mat-label>
+                                    <input formControlName="Name" required matInput matInput
+                                        placeholder="Họ và tên bạn.." autocomplete="off">
+                                </mat-form-field>
+
+                            </ng-container>
+                        </div>
+                        <div>
+                            <ng-container [formGroup]="dataContact">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Số điện thoại</mat-label>
+                                    <input formControlName="PhoneNumber" required matInput
+                                        placeholder="Số điện thoại nhận hàng.." autocomplete="off">
+                                </mat-form-field>
+
+                            </ng-container>
+
+                        </div>
+                        <div>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>E-mail</mat-label>
+                                <input [(ngModel)]="Email" matInput placeholder="Email của bạn" autocomplete="off">
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <div fxFlex="100" fxFlex.gt-sm="66.6" class="pr-2">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Tỉnh thành</mat-label>
+                                    <mat-select matNativeControl required matInput placeholder="Chọn tỉnh thành phố..">
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-sm="66.6">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Quận/Huyện</mat-label>
+                                    <mat-select matNativeControl required matInput placeholder="Chọn quận huyện..">
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div>
+                            <ng-container [formGroup]="dataContact">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Địa chỉ</mat-label>
+                                    <input formControlName="Address" matNativeControl required matInput
+                                        placeholder="Số nhà, đường phố, phường" autocomplete="off">
+                                </mat-form-field>
+
+                            </ng-container>
+
+                        </div>
+                        <div>
+                            <div fxFlex="100" fxFlex.gt-sm="100">
+                                <mat-form-field appearance="outline" class="w-100" style="line-height: 1.125;">
+                                    <mat-label>Ghi chú</mat-label>
+                                    <textarea [(ngModel)]="Note" matInput
+                                        placeholder="Ghi chú về đơn hàng,ví dụ:thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn"
+                                        rows="6"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-sm="33.3" class="p-3">
+                        <div style="border: 1px solid #ccc;padding: 15px;">
+                            <table mat-table [dataSource]="listProductSelected" class="wp-table-b">
+                                <div fxFlex="100" fxFlex.gt-sm="66.6" class="p-2">
+                                    <ng-container matColumnDef="nameproduct">
+                                        <th mat-header-cell *matHeaderCellDef class=" pl-3">
+                                            <b>Sản phẩm</b>
+                                        <td mat-cell *matCellDef="let element" style="color: #7db828;">
+                                            {{element.Name}} </td>
+                                        <td mat-footer-cell *matFooterCellDef class="td_b" style="text-align:right;">
+                                            <div>Tổng cộng </div>
+                                            <div>Phí ship </div>
+                                            <div><b>Tổng thanh toán</b></div>
+                                        </td>
+                                    </ng-container>
+
+                                </div>
+                                <div fxFlex="100" fxFlex.gt-sm="33.3" class="p-2">
+                                    <ng-container matColumnDef="price">
+                                        <th mat-header-cell *matHeaderCellDef style="text-align: right;">
+                                            <b>Thành tiền</b>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" style="text-align:right;">
+                                            {{element.totalMoney}} đ</td>
+                                        <td mat-footer-cell *matFooterCellDef class="td_b " style="text-align:right;">
+                                            <div class="pr-3">{{totalMoney.total | number:'1.0-2'}} đ</div>
+                                            <div>&nbsp;</div>
+                                            <div>&nbsp;</div>
+                                        </td>
+                                    </ng-container>
+                                </div>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                            <div>
+                                <div fxFlex="100" fxFlex.gt-sm="66.6" class="p-2">
+                                    <strong style="font-size: 16px;">Phương thức thanh toán</strong>
+                                </div>
+                            </div>
+                            <div>
+                                <div fxFlex="100" fxFlex.gt-sm="66.6" class="p-2">
+                                    <mat-checkbox>Thanh toán khi giao hàng (COD)</mat-checkbox>
+                                </div>
+                            </div>
+                            <div>
+                                <div fxFlex="100" fxFlex.gt-sm="100" class="p-2">
+                                    <p><b>Lưu ý:</b> Vui lòng kiểm tra chính xác thông tin địa chỉ, số điện thoại
+                                        của bạn để
+                                        đơn vị giao hàng gửi sản phẩm cho bạn thuận lợi nhất</p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <div fxFlex="100" fxFlex.gt-sm="50">
+                                    <button mat-stroked-button>
+                                        <a [routerLink]="['/cart']" class="social-icon"
+                                            style="display: flex;align-items: center;">
+                                            <mat-icon>keyboard_arrow_left</mat-icon> Về giỏ hàng
+                                        </a>
+                                    </button>
+                                </div>
+                                <div fxFlex="100" fxFlex.gt-sm="33.3">
+                                    <button mat-stroked-button><a class="social-icon"
+                                            style="display: flex;align-items: center;" (click)="orderSuccess()">
+                                            Hoàn tất đặt hàng
+                                            <mat-icon>keyboard_arrow_right</mat-icon>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

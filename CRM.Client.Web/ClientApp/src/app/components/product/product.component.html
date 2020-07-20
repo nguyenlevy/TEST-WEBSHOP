@@ -1,0 +1,218 @@
+<div class="app-product">
+    <div class="theme-container mt-1 ">
+        <mat-sidenav-container class="all-properties mt-3">
+            <mat-sidenav #sidenav [autoFocus]="false" [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'"
+                class="search-sidenav">
+                <mat-accordion multi="true">
+                    <mat-expansion-panel *ngFor="let dataAttribute of listAttribute; let i = index;" expanded="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title fxLayout="row" fxLayoutAlign="space-between">
+                                <span class="title-attribute"><strong>{{dataAttribute.AttributeLabel}}</strong></span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-container *ngFor="let data of dataAttribute.listAttributeValue; let i = index;">
+                            <div class="p-1">
+                                <mat-checkbox (change)="chkAttributeValue($event,data)">{{data.AttributeLabel}}
+                                </mat-checkbox>
+                            </div>
+                        </ng-container>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-sidenav>
+
+            <mat-sidenav-content ngClass.gt-sm="distance">
+
+                <div class="theme-container">
+
+                    <div fxLayout="row wrap">
+
+                        <div class="home-vertical-menu">
+                            <div class="menu-item">
+                                <h2 fxLayout="row" fxLayoutAlign="start center" routerLinkActive="active-link"
+                                    [routerLinkActiveOptions]="{exact:true}" [id]="'menu-item-'">
+                                    Trang chủ <mat-icon>keyboard_arrow_right</mat-icon> <span class="menu-title"
+                                        style="font-weight: normal !important;">
+
+                                        <span
+                                            *ngIf="dataFilter.displayTypeListProduct == 1">{{dataCategorys.Name}}</span>
+                                        <span *ngIf="dataFilter.displayTypeListProduct == 2">Từ khóa</span>
+
+                                        <span *ngIf="dataFilter.displayTypeListProduct == 3">{{Title}}</span>
+                                    </span>
+                                </h2>
+                            </div>
+                            <h2>
+                                <span *ngIf="dataFilter.displayTypeListProduct == 1" style="text-transform: uppercase;">
+                                    {{dataCategorys.Name}} ({{listProduct.length}} Sản phẩm)</span>
+                                <span *ngIf="dataFilter.displayTypeListProduct == 2"
+                                    style="text-transform: uppercase;">{{dataFilter.keyword}}
+                                    ({{listProductByKeyWord.length}} Sản phẩm)</span>
+                                <span *ngIf="dataFilter.displayTypeListProduct == 3">{{Title}}
+                                    ({{listProductFilter.length}} Sản phẩm)</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div fxLayout="row wrap" class="m-1 p-1">
+                        <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                            <mat-checkbox class="title-free-ship"> Free ship</mat-checkbox>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                            <div fxLayout="row" class="container-price-low">
+                                <div class="price-low">
+                                    Giá thấp nhất
+
+                                    <mat-icon class="icon-price-low">
+                                        arrow_drop_down</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-container customer-css-button"
+                    *ngIf="!dataFilter.displayKeyword && isDisplayCategorySub(dataCategorys.listChildren)" >
+                    <div class="mb-3">
+                        <div class="agents-carousel m-2" style="background:#ffffff">
+                            <div class="swiper-container h-100 carousel-outer" [swiper]="config">
+                                <div class="swiper-wrapper h-100">
+                                    <div *ngFor="let dataCategory of dataCategorys.listChildren"
+                                        class="swiper-slide item">
+                                        <!-- <app-category-item [property]="dataCategory"
+                                            (sendDataCategoryItem)="receiverCategoryItem($event)"></app-category-item> -->
+                                        <app-category-item [property]="dataCategory"></app-category-item>
+                                    </div>
+                                </div>
+                                <button mat-mini-fab color="primary" class="swiper-button-prev swipe-arrow">
+                                    <mat-icon>keyboard_arrow_left</mat-icon>
+                                </button>
+                                <button mat-mini-fab color="primary" class="swiper-button-next swipe-arrow">
+                                    <mat-icon>keyboard_arrow_right</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="theme-container">
+                    <div class="px-3 mb-3">
+                        <mat-tab-group mat-align-tabs="left" class="pricing-tabs">
+                            <mat-tab label="Sản phẩm được tài trợ">
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div> -->
+
+                <!-- <div class="divider m-2 p-2"></div> -->
+
+                <div class="px-3 mb-3 mt-2" *ngIf="displayNoResult">
+                    <div class="theme-container">
+                        <span class="title-no-result">Không
+                            tìm thấy kết quả phù hợp!</span>
+                    </div>
+                </div>
+
+
+                <div class="px-3 mb-3 mt-2">
+                    <div class="theme-container" *ngIf="dataFilter.displayTypeListProduct == 1">
+                        <product-list [listProduct]="listProduct" [isSale]="true"></product-list>
+                    </div>
+
+                    <div class="theme-container" *ngIf="dataFilter.displayTypeListProduct == 2">
+                        <div fxLayout="row wrap">
+                            <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                                <div class="title-tab-customer" routerLink="/news"><strong>Sản phẩm tìm
+                                        kiếm</strong></div>
+                            </div>
+                        </div>
+                        <app-product-list [listData]="listProductByKeyWord" [isSale]="true"></app-product-list>
+                    </div>
+
+
+                    <div class="theme-container" *ngIf="dataFilter.displayTypeListProduct == 3">
+                        <div class=" mb-3">
+
+                            <div fxLayout="row wrap" *ngIf="listProductFilter.length > 0">
+                                <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                                    <div class="title-tab-customer" routerLink="/news"><strong>{{Title}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <app-product-list [listData]="listProductFilter" [isSale]="true"></app-product-list>
+                        </div>
+                    </div>
+
+                    <!-- <div class="theme-container mb-3">
+                        <div fxLayout="row wrap" class="agent-wrapper row-pag">
+
+                            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.gt-xs="50">
+                                <i style="padding-left: 10px;">1 của 14922 trang</i>
+                            </div>
+
+                            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.gt-xs="50">
+
+                                <ul class="pag">
+                                    <li><a>
+                                            <mat-icon>keyboard_arrow_left</mat-icon>
+                                        </a></li>
+                                    <li><a>1</a></li>
+                                    <li><a>2</a></li>
+                                    <li><a>3</a></li>
+                                    <li><a>4</a></li>
+                                    <li><a>5</a></li>
+                                    <li><a>6</a></li>
+                                    <li><a>...</a></li>
+                                    <li><a>
+                                            <mat-icon>keyboard_arrow_right</mat-icon>
+                                        </a></li>
+                                </ul>
+                            </div>
+
+                            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.gt-xs="50">
+                                <div fxLayout="row" style="flex-direction: row-reverse !important;">
+                                    <div
+                                        style="text-align: right;width: 100%;display: flex;margin-left: auto;align-items: center;justify-content: flex-end;padding-right: 10px">
+                                        Đi tới trang
+                                        <input autocomplete="off"
+                                            style="border: 1px solid;line-height: 20px;width: 50px;line-height: 20px;margin-left: 5px;">
+                                        <button style="height: 22px;line-height: 22px;">
+                                            <mat-icon
+                                                style="height: 100%;width: 100%;font-size: 18px;line-height: 100%;">
+                                                keyboard_arrow_right</mat-icon>
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <!-- <div class="theme-container mb-3" *ngIf="appService.isDisplayViewed">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                            <div class="title-tab-customer" routerLink="/news"><strong>Sản phẩm đã xem</strong></div>
+                        </div>
+                    </div>
+                    <app-product-list [listData]="listProductViewed" [slidesPerView]="5" [isSale]="false">
+                    </app-product-list>
+                </div> -->
+                </div>
+                <div class="px-3 mb-3 mt-2">
+                    <div class="theme-container" *ngIf="appService.isDisplayViewed">
+                        <div fxLayout="row wrap">
+                            <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+                                <div class="title-tab-customer"><strong>SẢN PHẨM ĐÃ XEM</strong></div>
+                            </div>
+                        </div>
+                        <app-product-list [listData]="listProductViewed" [slidesPerView]="5" [isSale]="false">
+                        </app-product-list>
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+    </div>
+
+</div>

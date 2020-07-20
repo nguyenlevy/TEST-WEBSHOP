@@ -1,0 +1,41 @@
+<div class="agents-carousel mt-2">
+  <div class="swiper-container h-100 carousel-outer" [swiper]="config">
+    <div class="swiper-wrapper h-100">
+      <!-- <ng-container *ngFor="let property of properties; let i = index;">
+        <ng-container *ngIf="property.displayOn">
+          <div class="swiper-slide item">
+            <div class="mb-3">
+              <app-product-item [property]="properties[i]" [viewType]="viewType" [viewColChanged]="viewCol"
+                [isSale]="isSale">
+              </app-product-item>
+            </div>
+            <div *ngIf="i< (properties.length -1)">
+              <app-product-item [property]="properties[i+1]" [viewType]="viewType" [viewColChanged]="viewCol"
+                [isSale]="isSale">
+              </app-product-item>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="property.displayEnd">
+          <div class="swiper-slide item">
+            <app-product-item [property]="properties[i]" [viewType]="viewType" [viewColChanged]="viewCol"
+              [isSale]="isSale">
+            </app-product-item>
+          </div>
+        </ng-container>
+      </ng-container> -->
+
+      <div *ngFor="let property of properties" class="swiper-slide item">
+        <app-product-item [property]="property" [viewType]="viewType" [viewColChanged]="viewCol" [isSale]="isSale">
+        </app-product-item>
+      </div>
+
+    </div>
+    <!-- <button mat-mini-fab color="primary" class="swiper-button-prev swipe-arrow">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" class="swiper-button-next swipe-arrow">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button> -->
+  </div>
+</div>

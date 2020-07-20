@@ -1,0 +1,85 @@
+<div class="app-home">
+  <div class="px-3  slider-bgr">
+    <div class="theme-container ">
+      <app-home-slider [listCategorys]="listCategorys" [contentOffsetToTop]="true"></app-home-slider>
+    </div>
+  </div>
+
+  <div class="px-3 mt-2">
+    <div class="theme-container">
+      <app-home-menu-bar [listData]="listBar"></app-home-menu-bar>
+    </div>
+  </div>
+
+  <div class="px-3 mt-2">
+    <div class="theme-container">
+      <mat-tab-group mat-align-tabs="left" class="pricing-tabs" (selectedTabChange)="changeTab($event)">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <strong>SẢN PHẨM BÁN CHẠY</strong>
+          </ng-template>
+          <app-product-list [listData]="listProductBestSeller" [isSale]="true"></app-product-list>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <strong>HÀNG MỚI VỀ</strong>
+          </ng-template>
+          <app-product-list *ngIf="disPlayView" [listData]="listProductNews" [isSale]="true"></app-product-list>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <strong>ĐANG KHUYẾN MẠI</strong>
+          </ng-template>
+          <app-product-list *ngIf="disPlayView1" [listData]="listProductFlashSale" [isSale]="true"></app-product-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let dataCategory of listCategorys, let i = index">
+    <div class="px-3 mt-2">
+      <div class="theme-container">
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50" class="category-container">
+            <div class="title-tab-customer" (click)="choiceCategorys(dataCategory)">
+              <strong>{{dataCategory.Name}}</strong></div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxLayoutAlign="end center" class="category-container"
+            *ngIf="dataCategory.listChildren !=null">
+            <ng-container *ngFor="let dataChild of dataCategory.listChildren,let i = index">
+              <span class="divider" *ngIf="i%2 ==1"></span>
+              <div class="title-tab-customer-child" (click)="choiceCategorys(dataCategory)">{{dataChild.Name}}</div>
+            </ng-container>
+          </div>
+        </div>
+        <app-product-item-two-line [categoryID]="dataCategory.Id" [isSale]="true"></app-product-item-two-line>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <div class="px-3 mb-3 p-2 mt-2">
+    <div class="theme-container">
+      <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+          <div class="title-tab-customer" routerLink="/news"><strong>TIN TỨC & SỰ KIỆN</strong></div>
+        </div>
+      </div>
+      <app-home-blog></app-home-blog>
+    </div>
+  </div>
+
+  <div class="px-3 mb-3 mt-2">
+    <div class="theme-container" *ngIf="appService.isDisplayViewed">
+      <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" class="category-container">
+          <div class="title-tab-customer"><strong>SẢN PHẨM ĐÃ XEM</strong></div>
+        </div>
+      </div>
+      <app-product-list [listData]="listProductViewed" [isSale]="false"></app-product-list>
+    </div>
+
+
+  </div>
+
+</div>

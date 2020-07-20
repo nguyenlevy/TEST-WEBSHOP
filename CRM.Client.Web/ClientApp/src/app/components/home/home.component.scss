@@ -1,0 +1,103 @@
+.app-home {
+  background-color: #f1f1f1;
+  .slider-bgr {
+    background-color: #99d9ea;
+  }
+  .theme-container {
+    background-color: inherit;
+  }
+  box-sizing: border-box;
+}
+
+.agents-wrapper {
+  margin: -16px;
+  padding: 32px 0;
+  .agent-img {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+}
+.mat-card {
+  margin: 0px;
+}
+ng-deep {
+  .mat-tab-body-content {
+    overflow: hidden;
+  }
+}
+.theme-container {
+  background-color: #fff;
+  // margin-bottom: 10px;
+}
+.pricing-tabs {
+  .mat-tab-header {
+    border-bottom: 1px solid !important;
+  }
+}
+.pricing-tabs.mat-tab-group {
+  margin: 0px;
+}
+
+.label-tab-sw {
+  height: 48px;
+  width: 100%;
+  padding: 0 24px;
+  min-width: 160px;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+.title-tab-customer {
+  font-size: 14px;
+  text-transform: uppercase;
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 2px solid #3f51b5;
+  transform: translateY(1px);
+}
+
+.title-tab-customer-child {
+  font-size: 14px;
+  height: 48px;
+  padding: 0 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+  // min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  transform: translateY(1px);
+}
+.title-tab-customer-child:hover {
+  border-bottom: 2px solid #3f51b5;
+}
+.category-container {
+  border-bottom: 1px solid #3f51b5;
+}
+.divider {
+  display: inline-block;
+  width: 0;
+  height: 1.5em;
+  border-right: 1px solid #000000;
+}

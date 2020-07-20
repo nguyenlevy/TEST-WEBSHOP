@@ -1,0 +1,281 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+html,
+body {
+    position: relative;
+    min-height: 100%;
+    font-family: sans-serif !important;
+    font-size: 14px !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+}
+
+.header-panel {
+    padding: 5px;
+    background-color: #3780BF;
+    color: #fff;
+    border-top: solid #DEE2E6 1px;
+    border-left: solid #DEE2E6 1px;
+    border-right: solid #DEE2E6 1px;
+    font-weight: bold;
+}
+
+.right-text {
+    text-align: right;
+    width: 110px !important;
+    display: block;
+}
+
+.text-input {
+    width: 350px !important;
+    display: block;
+    font-weight: normal !important;
+}
+
+.text-input2 {
+    width: 450px !important;
+    display: block;
+    font-weight: normal !important;
+}
+
+.boldLabel {
+    font-weight: bold !important;
+}
+
+.datatable-cell {
+    vertical-align: middle !important;
+}
+
+.datatable-header {
+    font-weight: bold !important;
+    vertical-align: middle !important;
+}
+
+.sm-icons {
+    font-size: 15px !important;
+    font-weight: bold !important;
+}
+
+.pagination-right {
+    float: right !important;
+    margin-top: -26px !important;
+    margin-right: -26px !important;
+}
+
+.select-item {
+    background-color: #fff !important;
+}
+
+.left-text {
+    text-align: left !important;
+}
+
+.center-text {
+    text-align: center !important;
+}
+
+.left-text td {
+    text-align: left !important;
+}
+
+.center-text td {
+    text-align: center !important;
+}
+
+.sm-nav-pages {
+    font-size: 10px !important;
+}
+
+.active-nav-page {
+    background-color: #EBEDF2 !important;
+}
+
+.sm-button {
+    padding: 5px 10px !important;
+}
+
+.table tbody tr td {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    vertical-align: middle !important;
+}
+
+.tooltipobj {
+    border-bottom: 1px dotted black;
+}
+
+.table .kt-checkbox.kt-checkbox--brand>input:disabled~span:after {
+    border-color: #000 !important;
+}
+
+.table .kt-checkbox.kt-checkbox--brand.kt-checkbox--bold>input:checked~span {
+    border: 2px solid #000 !important;
+    margin-top: -15px !important;
+}
+
+.table .kt-checkbox.kt-checkbox--brand>span {
+    border: 2px solid #000 !important;
+    margin-top: -15px !important;
+}
+
+.edit-form .kt-checkbox.kt-checkbox--brand>input:disabled~span:after {
+    border-color: #000 !important;
+}
+
+.edit-form .kt-checkbox.kt-checkbox--brand.kt-checkbox--bold>input:checked~span {
+    border: 2px solid #000 !important;
+}
+
+.edit-form .kt-checkbox.kt-checkbox--brand>span {
+    border: 2px solid #000 !important;
+}
+
+.edit-form .kt-checkbox.kt-checkbox--brand>span:after {
+    border-color: #000 !important;
+}
+
+.cell-center-align {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.cell-right-align {
+    vertical-align: middle !important;
+    text-align: right !important;
+}
+
+.cell-left-align {
+    vertical-align: middle !important;
+    text-align: left !important;
+}
+
+.large-button {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+
+.medium-button {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.sm-timepicker {
+    width: 70px !important;
+    height: 35px !important;
+}
+
+.chk-giolamviec {
+    margin-top: -10px !important;
+    margin-left: 50px !important;
+    display: block !important
+}
+
+.cngiolamviec tr td {
+    border-bottom: dotted 1px #F2F2F2;
+}
+
+.cngiolamviec tr,
+th,
+td {
+    opacity: 1 !important;
+}
+
+#kt_table_1 thead tr,
+td {
+    padding: 2px !important;
+}
+
+#kt_table_1 thead tr,
+th {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+#kt_table_1 td label {
+    margin-left: 12px !important;
+}
+
+#tblNgayCongChuan tr,
+td {
+    opacity: 0.7;
+}
+
+.pad-l-r-100 {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+/* Ovveride prime ng */
+
+body .ui-widget {
+    font-family: sans-serif !important;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+button.ui-datepicker-trigger.ui-calendar-button.ng-tns-c2-0.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ng-star-inserted {
+    height: 34.67px;
+}
+
+body .ui-calendar.ui-calendar-w-btn .ui-datepicker-trigger.ui-button {
+    height: 34.67px !important;
+}
+
+body .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    width: calc(100% - 33px) !important;
+}
+
+p-calendar {
+    width: 100% !important;
+}
+
+body .ui-chkbox-label {
+    min-width: 150px !important;
+}
+
+body .ui-inputtext.fix-height {
+    height: 30px !important;
+}
+
+body .ui-inputtext:disabled {
+    background: #e3e3e3;
+    color: #b3b3b3;
+}
